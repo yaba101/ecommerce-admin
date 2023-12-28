@@ -1,9 +1,13 @@
-import React from 'react'
+import { UserButton } from '@clerk/nextjs'
+import Link from 'next/link'
 
-const Home = () => {
+
+const SetUpPage = () => {
   return (
-    <div>Welcome to Admin Dashboard!</div>
+     <div className="h-screen p-4">
+      <UserButton afterSignOutUrl='/' />
+    </div>
   )
 }
 
-export default Home
+export default SetUpPage
