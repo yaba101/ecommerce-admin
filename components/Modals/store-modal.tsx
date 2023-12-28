@@ -19,6 +19,7 @@ import prisma from "@/lib/prismadb";
 import { useState } from "react";
 import axios from "axios";
 import { useToast } from "@/components/ui/use-toast";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -31,6 +32,8 @@ const StoreModal = () => {
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
 
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -40,12 +43,10 @@ const StoreModal = () => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       setLoading(true);
+
       const response = await axios.post(`/api/stores`, values);
 
-      toast({
-        variant: "default",
-        title: "Store Created",
-      });
+      window.location.assign(`/${response.data.id}`);
     } catch (error) {
       setLoading(false);
       toast({
