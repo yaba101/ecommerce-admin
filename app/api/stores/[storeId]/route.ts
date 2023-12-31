@@ -50,7 +50,7 @@ export async function DELETE(
     });
     return NextResponse.json(store);
   } catch (error) {
-    console.error(`[STORES_PATCH [ StoreId ]] Error: ${error}S`);
+    console.error(`[STORES_DELETE [ StoreId ]] Error: ${error}S`);
     return new NextResponse(`Internal Server Error`, { status: 500 });
   }
 }
