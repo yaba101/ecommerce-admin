@@ -85,6 +85,8 @@ export async function DELETE(
     if (!storeByUserId)
       return new NextResponse("Unauthorized", { status: 403 });
 
+    console.log("params id", params);
+
     const billboard = await prisma.billboard.delete({
       where: {
         id: params.billboardId,
@@ -92,7 +94,7 @@ export async function DELETE(
     });
     return NextResponse.json(billboard);
   } catch (error) {
-    console.error(`[BILLBOARD DELETE] [ BillboardID ]] Error: ${error}S`);
+    console.error(`[BILLBOARD DELETE] [ BillboardID ]] Error: ${error}`);
     return new NextResponse(`Internal Server Error`, { status: 500 });
   }
 }

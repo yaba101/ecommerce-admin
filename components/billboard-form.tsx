@@ -1,6 +1,6 @@
 "use client";
 import * as z from "zod";
-import { Billboard, Store } from "@prisma/client";
+import { Billboard } from "@prisma/client";
 import Heading from "@/components/ui/heading";
 import { Button } from "@/components/ui/button";
 import { Trash } from "lucide-react";
@@ -75,8 +75,8 @@ const BillboardForm = ({ initialData }: BillboardFormProps) => {
       } else {
         await axios.post(`/api/${params.storeId}/billboards`, data);
       }
-      router.refresh();
       router.push(`/${params.storeId}/billboards`);
+      router.refresh();
       toast({
         variant: "default",
         title: toastMessage,
@@ -96,7 +96,7 @@ const BillboardForm = ({ initialData }: BillboardFormProps) => {
     try {
       setLoading(true);
       await axios.delete(
-        `/api/${params.storeId}/billboards'/${params.billboardId}`
+        `/api/${params.storeId}/billboards/${params.billboardId}`
       );
       router.push("/");
       router.refresh();
