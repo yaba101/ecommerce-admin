@@ -2,7 +2,7 @@ import { format } from "date-fns";
 import BillboardClient from "@/components/billboard-client";
 import React from "react";
 import prisma from "@/lib/prismadb";
-import { BillboardColumn } from "@/components/Data-Table/columns";
+import { BillboardColumn } from "@/components/Data-Table/category/columns";
 const Billboards = async ({ params }: { params: { storeId: string } }) => {
   const billboards = await prisma.billboard.findMany({
     where: {
