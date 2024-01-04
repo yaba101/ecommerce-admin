@@ -32,8 +32,8 @@ const formSchema = z.object({
   name: z.string().min(2, {
     message: "name must be at least 2 characters.",
   }),
-  value: z.string().min(2, {
-    message: "value must be at least 2 characters.",
+  value: z.string().min(1, {
+    message: "value must be at least 1 characters.",
   }),
 });
 
