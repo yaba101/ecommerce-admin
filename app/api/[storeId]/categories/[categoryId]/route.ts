@@ -14,10 +14,13 @@ export async function GET(
       where: {
         id: params.categoryId,
       },
+      include: {
+        billboard: true,
+      },
     });
     return NextResponse.json(category);
   } catch (error) {
-    console.error(`[CATEGORY GET] [ CategoryID ]] Error: ${error}S`);
+    console.error(`[CATEGORY GET] [ CategoryID ]] Error: ${error}`);
     return new NextResponse(`Internal Server Error`, { status: 500 });
   }
 }

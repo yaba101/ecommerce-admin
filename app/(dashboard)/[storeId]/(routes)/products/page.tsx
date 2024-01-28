@@ -25,7 +25,7 @@ const Products = async ({ params }: { params: { storeId: string } }) => {
     name: product.name,
     isFeatured: product.isFeatured,
     isArchived: product.isArchived,
-    price: Priceformatter.format(product.price.toNumber()),
+    price: Priceformatter.format(product.price),
     category: product.category.name,
     size: product.size.name,
     color: product.color.value,
